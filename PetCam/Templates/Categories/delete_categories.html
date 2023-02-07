@@ -1,0 +1,21 @@
+{% extends 'Base.html' %}
+
+{% block title %}
+
+    Confimación de borrado
+
+{% endblock %}
+
+
+{% block body %}
+
+    <h2>Categoria a borrar: {{object.name_category}}</h2>
+    <p>¿Esta seguro de esta acción?</p>
+
+    <form action="" method="POST">
+        {% csrf_token %}
+        <input type="submit" value="Borrar">
+    </form>
+
+
+{% endblock %}

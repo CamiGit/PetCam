@@ -1,0 +1,41 @@
+{% extends 'Base.html' %}
+
+{% block title %}
+    Crear Categoria
+{% endblock %}
+
+{% block body %}
+
+<div style="border: 2px solid black; margin: 10px auto; padding: 15px; width: 400px; ">
+    <div style="text-align: center; padding: 8px;">
+        <h1>Crear Categoria</h1>
+    </div>
+    
+    <div style="width: 400px; margin: 0px auto; padding: 20px;">
+    
+        {% if form %}
+            <form action="" method="POST">
+            
+                {% csrf_token %}
+                
+                <table>
+                    {{form.as_table}}
+                </table>
+    
+                <input type="submit" value="Crear Categoria">
+                
+            </form>
+        {% endif %}
+    
+        {% if form_errors %}    
+            {{form_errors}}
+        {% endif %}
+    
+    </div>
+    </div>   
+
+    {% if message %}
+        <h2 style="color: aqua;"> {{message}}</h2>
+    {% endif %}
+
+{% endblock %}

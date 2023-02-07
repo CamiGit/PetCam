@@ -1,0 +1,50 @@
+{% extends 'Base.html' %}
+
+{% block title %}
+Lista Categorias
+
+{% endblock %}
+
+{% block search %}
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item dropdown">
+        </ul>
+        <div style="text-align: center;">
+            <a href="/Categories/new_category" class="btn btn-primary" style="color: white; background-color: rgb(28, 28, 38); border-color: black;"> Crear Categoria </a>
+        </div>
+        <form class="form-inline my-2 my-lg-0" action="/Categories/list_category/" method="GET">
+            <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search" name="search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+        </form>
+    </nav>
+
+{% endblock %}
+
+
+
+{% block body %}
+
+{% for Categories in Category %}
+
+<div class="card mb-3">
+    <h1 class="card-title" style="text-align: center; color: rgb(9, 9, 9);">{{Categories.name_category}}</h1>
+    <div class="card-body">
+        <div style="text-align: center;">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDpncO2AL_VN5NZACR4G_JedWm-Y_279x2X6ukDdBCJlydxuQNFB2bxT52YQuv7oX2vJY&usqp=CAU" class="card-img-top" alt="..." style="width: 700px; height: 500px">
+            <div style="padding: 15px;">
+                <a href="/Categories/update_category/{{Categories.id}}/" class="btn btn.primary" style="color: white; background-color: rgb(28, 28, 38); border-color: black;"> Actualizar </a>
+                <a href="/Categories/delete_category/{{Categories.id}}/" class="btn btn.primary" style="color: white; background-color: rgb(254, 10, 10); border-color: rgb(9, 8, 8);"> Borrar </a>
+            </div>
+        </div>    
+    </div>
+</div>
+
+{% endfor %}
+
+{% endblock %}
+
+
+
+
