@@ -1,0 +1,37 @@
+{% extends 'Base.html' %}
+
+{% block title %}
+    Actualiza tus datos 
+{% endblock %}
+
+{% block body %}
+
+<div style="border: 2px solid black; margin: 10px auto; padding: 15px; width: 400px; ">
+    <div style="text-align: center; padding: 8px;">
+        <h1>Ingresa tus datos</h1>
+    </div>
+    
+    <div style="width: 400px; margin: 0px auto; padding: 20px;">
+    
+        {% if form %}
+            <form action="" method="POST" enctype="multipart/form-data">
+            
+                {% csrf_token %}
+                
+                <table>
+                    {{form.as_table}}
+                </table>
+
+    
+                <input type="submit" value="Actualizar">
+                
+            </form>
+        {% endif %}
+
+        {% if errors %}
+            <ul>{{errors}}</ul>
+        {% endif%}
+    </div>
+    </div>   
+
+{% endblock %}
