@@ -1,4 +1,5 @@
 from django.views.generic import ListView, CreateView, DeleteView, UpdateView
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 from Orders.models import Order
 

@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
 
 from Users.models import User
 from Users.forms import UserForm
@@ -30,7 +31,7 @@ def new_user(request):
             }
             return render(request, 'Users/new_users.html', context=context)
 
-
+@login_required
 def list_user(request):
     if 'search' in request.GET:
         search = request.GET['search']

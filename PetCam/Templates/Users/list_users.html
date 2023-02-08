@@ -31,8 +31,12 @@ Lista de Productos
     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDpncO2AL_VN5NZACR4G_JedWm-Y_279x2X6ukDdBCJlydxuQNFB2bxT52YQuv7oX2vJY&usqp=CAU" class="card-img-top" alt="...">
     <div class="card-body">
         <h5 class="card-title">{{Users.name}}</h5>
+        {% if request.user.is_authenticated %}
+        {% if request.user.is_superuser %}
         <p class="card-text">{{Users.address}}</p>
-        <p class="card-text">{{Users.phone_number}}</p>    
+        <p class="card-text">{{Users.phone_number}}</p> 
+        {% endif %}
+        {% endif %}   
 </div>
 
 {% endfor %}

@@ -12,10 +12,14 @@ Lista de Productos
   <ul class="navbar-nav mr-auto">
     <li class="nav-item dropdown">
   </ul>
+  {% if request.user.is_authenticated %}
+  {% if request.user.is_superuser %}
   <div style="text-align: center;">
     <a href="/Products/new_product" class="btn btn-primary"
-      style="color: white; background-color: rgb(28, 28, 38); border-color: black;"> Crear Producto </a>
+      style="color: white; background-color: rgb(28, 28, 38); border-color: black; margin-right: 10px;"> Crear Producto </a>
   </div>
+  {% endif %}
+  {% endif %}
   <form class="form-inline my-2 my-lg-0" action="/Products/list_product/" method="GET">
     <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search" name="search">
     <button class="btn btn-outline-success my-2 my-sm-0" type="Buscar">Buscar</button>
@@ -30,6 +34,10 @@ Lista de Productos
 
 <div class="container" style="padding: 15px;">
   <div class="row col-sm" style="text-align: center;">
+
+    {% if message %}
+      <h1>{{message}}</h1>
+    {% endif %}
     
 {% for Product in products %}
 
@@ -45,14 +53,18 @@ Lista de Productos
       style="color: white; background-color: rgb(6, 7, 9); border-color: black;">
       Comprar
     </button>
-    <a href="/Products/update_product/{{Product.id}}/" class="btn btn.primary"
-      style="color: white; background-color: rgb(6, 7, 9); border-color: black;"> Actualizar </a>
     <a href="/Products/detail_product/{{Product.id}}/" class="btn btn.primary"
-      style="color: white; background-color: rgb(6, 7, 9); border-color: black; margin: 15px;" > Detalle </a>
-    <div style="margin: 15px;">
-      <a href="/Products/delete_product/{{Product.id}}/" class="btn btn.primary"
-        style="color: white; background-color: rgb(232, 10, 10); border-color: rgb(7, 7, 7);"> Borrar </a>
-    </div>
+    style="color: white; background-color: rgb(6, 7, 9); border-color: black; margin: 15px;" > Detalle </a>
+    {% if request.user.is_authenticated %}
+      {% if request.user.is_superuser %}
+      <a href="/Products/update_product/{{Product.id}}/" class="btn btn.primary"
+        style="color: white; background-color: rgb(6, 7, 9); border-color: black;"> Actualizar </a>
+      <div style="margin: 15px;">
+        <a href="/Products/delete_product/{{Product.id}}/" class="btn btn.primary"
+          style="color: white; background-color: rgb(232, 10, 10); border-color: rgb(7, 7, 7);"> Borrar </a>
+      </div>
+      {% endif %}
+    {% endif %}
   </div>
 
 </div>

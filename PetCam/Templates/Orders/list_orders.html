@@ -32,10 +32,14 @@ Lista de Pedidos
 <div class="card" style="width: 25rem; text-align: center; color: rgb(0, 0, 0);">
         <h5 class="card-title">Nombre: {{order.user}}</h5>
         <p class="card-text">Producto: {{order.product}}</p>
+        {% if request.user.is_authenticated %}
+        {% if request.user.is_superuser %}
         <div>
         <a href="/Orders/update_order/{{order.id}}/" class="btn btn.primary" style="color: white; background-color: rgb(28, 28, 38); border-color: black;"> Actualizar </a>   
         <a href="/Orders/delete_order/{{order.id}}/" class="btn btn.primary" style="color: white; background-color: rgb(243, 8, 8); border-color: black;"> Borrar </a>
-        </div>    
+        </div> 
+        {% endif %}
+        {% endif %}   
 </div>
 
 

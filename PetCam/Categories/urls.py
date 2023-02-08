@@ -4,7 +4,7 @@ from Categories.views import new_category, list_category, CategoryUpdateView, Ca
 
 urlpatterns = [
     path('new_category/', new_category),
-    path('list_category/', list_category),
+    path('list_category/', list_category, name='category'),
     path('update_category/<int:pk>/', CategoryUpdateView.as_view()),
     path('delete_category/<int:pk>/', CategoryDeleteView.as_view()),
 ]
