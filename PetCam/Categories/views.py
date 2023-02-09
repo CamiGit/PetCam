@@ -50,3 +50,7 @@ class CategoryDeleteView(DeleteView):
     model = Category
     template_name = 'Categories/delete_Categories.html'
     success_url = '/Categories/list_category/'
+
+
+def About_me(request):
+    return render(request, 'Categories/About_me.html', context={})
